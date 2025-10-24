@@ -1,0 +1,42 @@
+:root {
+      /* Light theme colors */
+      --bg-light: #ffffff;
+      --text-light: #333333;
+      --primary-light: #4a90e2;
+      --secondary-light: #f5f5f5;
+      --border-light: #e0e0e0;
+
+      /* Dark theme colors */
+      --bg-dark: #1a1a1a;
+      --text-dark: #ffffff;
+      --primary-dark: #60a5fa;
+      --secondary-dark: #2d2d2d;
+      --border-dark: #404040;
+
+      /* Shared variables */
+      --border-radius: 8px;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 2rem;
+}
+
+/* System dark mode detection */
+@media (prefers-color-scheme: dark) {
+      :root {
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --border: var(--border-dark);
+      }
+}
+
+@media (prefers-color-scheme: light) {
+      :root {
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --primary: var(--primary-light);
+            --secondary: var(--secondary-light);
+            --border: var(--border-light);
+      }
+}
