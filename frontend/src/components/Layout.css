@@ -36,6 +36,26 @@
   color: #fff;
 }
 
+.navbar-username {
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar-logout {
+  background: none;
+  border: 1px solid #555;
+  color: #ccc;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.navbar-logout:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
 .main-content {
   flex: 1;
   padding: 1.5rem;

@@ -1,18 +1,22 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../components/AuthForm.css'
+import { registerUser } from '../api/auth'
+import { useAuth } from '../context/AuthContext'
 
 function Register() {
   const [form, setForm] = useState({ fullname: '', email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
     setError('')
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (!form.fullname || !form.email || !form.password) {
       setError('Please fill in all fields.')
@@ -22,8 +26,17 @@ function Register() {
       setError('Password must be at least 6 characters.')
       return
     }
-    // API call wired in Step 5
     setLoading(true)
+    try {
+      // backend expects 'username' field
+      const res = await registerUser({ username: form.fullname, email: form.email, password: form.password })
+      login({ username: res.data.username, email: res.data.email }, 'user')
+      navigate('/')
+    } catch (err) {
+      setError(err.response?.data || 'Registration failed. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
