@@ -7,3 +7,4 @@ const api = axios.create({
 
 export const getFoods = () => api.get('/api/food')
 export const getFoodsByPartner = (partnerId) => api.get(`/api/food/partner/${partnerId}`)
+export const createFood = (data) => api.post('/api/food', data)
